@@ -377,16 +377,16 @@ document.addEventListener('DOMContentLoaded', function() {
   let header_slider;
   let selector = document.getElementById('index_header_slider');
   let options = {
-    loop: true,
-    speed: 700,
-    autoplay: {
-      delay: 3000,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-        type: 'bullets',
-        clickable: 'true'
-    },
+    loop: false,
+    // speed: 700,
+    // autoplay: {
+    //   delay: 3000,
+    // },
+    // pagination: {
+    //     el: '.swiper-pagination',
+    //     type: 'bullets',
+    //     clickable: 'true'
+    // },
   }
   header_slider = new Swiper(selector, options);
     

@@ -189,19 +189,19 @@
           </div>
           <div class="mv-text">
             <div class="mv-text-head">
-            リフォームのプロフェッショナルであり、<br class="pc">細かい修繕から大規模修繕まで対応しています。
+            キャッチコピーが入ります。
             </div>
-            <p>現地調査も見積りも無料の為、気軽に相談可能です。<br>
-            建物診断・外壁診断も対応しています。<br>
-            ドローンによる技術指導や業務請負も行っており、ドローン国家操縦ライセンスも保持しております。</p>
+            <p>説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</p>
           </div>
         </div><!-- END .item -->
 
-        <div class="swiper-slide item image_item item2">
-          <div class="image_wrap">
-            <div class="bg_image image"></div>
+        <!-- 
+          <div class="swiper-slide item image_item item2">
+            <div class="image_wrap">
+              <div class="bg_image image"></div>
+            </div>
           </div>
-        </div><!-- END .item -->
+        END .item -->
       </div><!-- END swiper-wrapper -->
 
       
