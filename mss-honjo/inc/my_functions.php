@@ -1,4 +1,7 @@
 <?php
+//タイトルタグを自動で挿入
+add_theme_support( 'title-tag' );
+
 //デフォルトの投稿のラベルを変更
 function change_post_menu_label() {
   global $menu;
@@ -140,22 +143,4 @@ function information_rewrite_rules_array( $rules ) {
 }
 add_filter( 'rewrite_rules_array', 'information_rewrite_rules_array' );
 
-//マニュアル追加
-add_action ( 'admin_menu', 'artist_add_pages' );
-function artist_add_pages () {
-	add_menu_page('マニュアル', 'マニュアル', 'manage_options', 'manual', 'manual', 'dashicons-admin-generic', 2);
-}
-function add_side_menu_manual() {
-	//pdfのurlを設定
-	$pdf_url = get_bloginfo('template_directory') . '/manual.pdf';
-	?>
-	<script type="text/javascript">
-		jQuery( function( $ ) {
-			$ ("#toplevel_page_manual a").attr("href","<?php echo $pdf_url; ?>"); //hrefを書き換える
-			$ ("#toplevel_page_manual a").attr("target","_blank"); //target blankを追加する
-		} );
-	</script>
-<?php
-}
-add_action('admin_footer', 'add_side_menu_manual');
 ?>
