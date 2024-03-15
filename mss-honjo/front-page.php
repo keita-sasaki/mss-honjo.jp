@@ -15,7 +15,7 @@
     <div class="firstview-text-content">説明が入ります。説明が入ります。説明が入ります。説明が入ります。説明が入ります。</div>
   </div>
 </div>
-<section class="section-about">
+<section class="section-about" id="aboutus">
   <div class="post_list_title">
     <h3 class="section-title rich_font"><span class="en">ABOUT US</span><span class="ja">私たちについて</span></h3>
     <div class="about-item">
@@ -40,7 +40,7 @@
   <div></div>
 </section>
 <?php include "inc/inc_service.php"; ?>
-<section class="section-news">
+<section class="section-news" id="news">
   <div class="post_list_title">
       <h3 class="section-title rich_font"><span class="en">NEWS</span><span class="ja">お知らせ</span></h3>
   </div>
@@ -159,7 +159,7 @@
   </div><!-- END #main_contents -->
 </section>
 
-<section id="company" class="section-company">
+<section id="access" class="section-company">
   <div class="post_list_title">
     <h3 class="section-title rich_font"><span class="en">ACCESS</span><span class="ja">アクセス</span></h3>
   </div>
