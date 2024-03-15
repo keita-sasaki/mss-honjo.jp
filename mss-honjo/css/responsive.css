@@ -216,7 +216,7 @@
 .head-infomation { display: none;}
 
 /* ロゴ */
-#header_logo { margin-left:20px; }
+/* #header_logo { margin-left:20px; } */
 #header_logo .pc_logo_image { display:none; }
 #header_logo .pc_logo_text { display:none; }
 #header_logo .mobile_logo_image { display:block; }

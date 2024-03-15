@@ -5,8 +5,9 @@
 
     $obj = get_post_type_object(get_post_type());
     $slug = $obj->rewrite['slug'];
-    if($slug == 'post') { $slug = 'column';}
+    if($slug == 'post') { $slug = 'NEWS';}
 ?>
+<div class="content-wrap">
 <div class="page-mv <?php echo $slug; ?>">
   <h1 class="page-title"><?php echo $obj->labels->name; ?></h1>
   <div class="page-title-en"><?php echo strtoupper($slug); ?></div>
@@ -226,7 +227,7 @@
     ?>
     </div><!-- END .main_col_inner -->
   </div><!-- END #main_col -->
-
+  </div><!-- /.content-wrap -->
   <?php
       // widget ------------------------
       #get_sidebar();

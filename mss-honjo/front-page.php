@@ -8,7 +8,7 @@
 
     
 ?>
-<div class="home-wrap">
+<div class="content-wrap">
 <div class="firstview">
   <div class="firstview-text">
     <h2 class="firstview-text-head">キャッチコピーが入ります。</h2>
@@ -125,9 +125,9 @@
                     <p class="meta">
                     <?php if($options['index_post_list_show_date']) { ?>
                     <span class="date"><time class="entry-date updated"><?php the_time('Y.m.d'); ?></time></span><?php }; ?>
-                    <?php #if ( $category && $options['index_post_list_show_category'] && ! is_wp_error($category) ) { ?>
-                    <!-- <span class="category cat_id<?php echo esc_attr($cat_id); ?>" data-href="<?php echo esc_url($cat_url); ?>"><?php echo esc_html($cat_name); ?></span> -->
-                    <?php #}; ?>
+                    <?php if ( $category && $options['index_post_list_show_category'] && ! is_wp_error($category) ) { ?>
+                    <span class="category cat_id<?php echo esc_attr($cat_id); ?>" data-href="<?php echo esc_url($cat_url); ?>"><?php echo esc_html($cat_name); ?></span>
+                    <?php }; ?>
                     <?php if ( $terms && ! is_wp_error($terms) ) { ?>
                     <span class="category cat_id<?php echo esc_attr($cat_id); ?>" data-href="<?php echo esc_url($cat_url); ?>"><?php echo esc_html($cat_name); ?></span>
                     <?php } ?>
@@ -192,5 +192,5 @@
 <section id="map" class="section-map">
 <iframe src="https://maps.google.co.jp/maps?output=embed&q=秋田県由利本荘市薬師堂中道127&z=16" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
-</div><!-- /.home-wrap -->
+</div><!-- /.content-wrap -->
 <?php get_footer(); ?>
