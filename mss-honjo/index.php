@@ -39,7 +39,7 @@ if(is_post_type_archive()) {
     $name = $obj->labels->name;
   }
 ?>
-<div class="content-warp">
+<div class="content-wrap">
 <div class="page-mv <?php echo $slug; ?>">
   <h1 class="page-title"><?php echo $name; ?></h1>
   <div class="page-title-en"><?php echo strtoupper($slug); ?></div>
