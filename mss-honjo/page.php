@@ -13,6 +13,7 @@
 
   $pageslug = get_post_field( 'post_name', get_the_ID() );
 ?>
+<div class="content-wrap">
 <div class="page-mv <?php echo $pageslug; ?>">
   <h1 class="page-title"><?php the_title(); ?></h1>
   <div class="page-title-en"><?php echo SCF::get('title-en'); ?></div>
@@ -141,7 +142,7 @@
 ?>
 
 </div><!-- END #main_contents -->
-
+  </div><!-- /.content-wrap -->
 <?php
 if(!is_page('contact')) :
   include "inc/inc_service.php";

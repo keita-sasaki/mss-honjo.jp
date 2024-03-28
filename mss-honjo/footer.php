@@ -48,7 +48,7 @@
           </div>
 
           <div class="footer-tel">
-            <p class="footer-tel-no"><a href="tel:080-1848-5421"><img src="<?php echo get_template_directory_uri(); ?>/img/footer-tel.png" alt="080-1848-5421"></a></p>
+            <p class="footer-tel-no"><a href="tel:000-0000-0000">000-0000-0000</a></p>
             <p class="footer-tel-time">9:00-18:00</p>
           </div>
 
@@ -79,7 +79,7 @@
       <div id="footer_bottom_inner">
 
       <?php // copyright -------------------------------------------- ?>
-        <p id="copyright">&copy; HANABISHI REFORM</p>
+        <p id="copyright">&copy; COMPANY</p>
 
       </div><!-- END #footer_bottom_inner -->
     </div><!-- END #footer_bottom -->
@@ -96,6 +96,15 @@
     if (has_nav_menu('global-menu')) { ?>
 <div id="drawer_menu">
   <div id="close_button" class="close_button"></div>
+  <div class="drawer-tel">
+    <p class="drawer-tel-text">ご予約はお気軽に！</p>
+    <p class="drawer-tel-no"><a href="tel:000-0000-0000">000-0000-0000</a></p>
+    <p class="drawer-tel-info">
+    営業時間 / 平日-9:00 - 18:00・祝日-9:00 - 18:00<br>
+    休診 / 第3木曜日<br>
+    住所 / 秋田県由利本荘市薬師堂中道127
+    </p>
+  </div>
   <nav>
     <?php wp_nav_menu( array( 'menu_id' => 'mobile_menu', 'sort_column' => 'menu_order', 'theme_location' => 'global-menu' , 'container' => '' ) ); ?>
   </nav>
@@ -144,6 +153,21 @@
       endif;
     endif;
 ?>
+<script>
+  $(function() {
+    var pos = $("#header").offset().top;
+    var height = $("#header").outerHeight();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > pos) {
+            $("#header").addClass("fix");
+            $("body").css("padding-top", height);
+        } else {
+            $("#header").removeClass("fix");
+            $("body").css("padding-top", 0);
+        }
+    });
+  });
+</script>
 
 <?php wp_footer(); ?>
 </body>

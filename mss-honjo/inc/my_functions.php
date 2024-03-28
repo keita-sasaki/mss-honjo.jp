@@ -1,25 +1,28 @@
 <?php
+//タイトルタグを自動で挿入
+add_theme_support( 'title-tag' );
+
 //デフォルトの投稿のラベルを変更
 function change_post_menu_label() {
   global $menu;
   global $submenu;
-  $menu[5][0] = 'コラム';
-  $submenu['edit.php'][5][0] = 'コラム一覧';
-  $submenu['edit.php'][10][0] = '新しいコラム';
+  $menu[5][0] = 'お知らせ';
+  $submenu['edit.php'][5][0] = 'お知らせ一覧';
+  $submenu['edit.php'][10][0] = '新しいお知らせ';
   $submenu['edit.php'][16][0] = 'タグ';
 }
 
 function change_post_object_label() {
   global $wp_post_types;
   $labels = &$wp_post_types['post']->labels;
-  $labels->name = 'コラム';
-  $labels->singular_name = 'コラム';
-  $labels->add_new = _x('追加', 'コラム');
-  $labels->add_new_item = 'コラムの新規追加';
-  $labels->edit_item = 'コラムの編集';
-  $labels->new_item = '新規コラム';
-  $labels->view_item = 'コラムを表示';
-  $labels->search_items = 'コラムを検索';
+  $labels->name = 'お知らせ';
+  $labels->singular_name = 'お知らせ';
+  $labels->add_new = _x('追加', 'お知らせ');
+  $labels->add_new_item = 'お知らせの新規追加';
+  $labels->edit_item = 'お知らせの編集';
+  $labels->new_item = '新規お知らせ';
+  $labels->view_item = 'お知らせを表示';
+  $labels->search_items = 'お知らせを検索';
   $labels->not_found = '記事が見つかりませんでした';
   $labels->not_found_in_trash = 'ゴミ箱に記事は見つかりませんでした';
 }
@@ -28,7 +31,7 @@ add_action( 'admin_menu', 'change_post_menu_label' );
 
 //カスタム投稿追加
 function create_post_type() {
-  register_post_type( 'news', [ // 投稿タイプ名の定義
+  /* register_post_type( 'news', [ // 投稿タイプ名の定義
     'labels' => [
       'name'          => 'お知らせ', // 管理画面上で表示する投稿タイプ名
       'singular_name' => 'お知らせ',    // カスタム投稿の識別名
@@ -39,7 +42,7 @@ function create_post_type() {
     'supports' => array('title', 'editor', 'thumbnail'), //アイキャッチ画像対応
     'rewrite' => array('with_front' => false,),
     'show_in_rest'  => true,  // 5系から出てきた新エディタ「Gutenberg」を有効にする
-  ]);
+  ]); */
   register_post_type( 'works', [ // 投稿タイプ名の定義
     'labels' => [
       'name'          => '施工事例', // 管理画面上で表示する投稿タイプ名
@@ -66,7 +69,7 @@ function add_post_category_archive( $wp_query ) {
 add_action( 'pre_get_posts', 'add_post_category_archive' , 10 , 1);
 
 //タクソノミー追加
-function add_taxonomy() {
+/* function add_taxonomy() {
   //お知らせカテゴリ
   register_taxonomy(
   'cat-news',
@@ -85,13 +88,13 @@ function add_taxonomy() {
   )
   );
 }
-add_action( 'init', 'add_taxonomy' );
+add_action( 'init', 'add_taxonomy' ); */
 
 //POSTのアーカイブURLをカスタマイズ
 function post_has_archive( $args, $post_type ) {
   if ( 'post' == $post_type ) {
    $args['rewrite'] = true;
-   $args['has_archive'] = 'column'; //任意のスラッグ名　←アーカイブページを有効に
+   $args['has_archive'] = 'news'; //任意のスラッグ名　←アーカイブページを有効に
    #$args['label'] = 'TECHブログ'; //管理画面左ナビに「投稿」の代わりに表示される
    }
    return $args;
@@ -106,14 +109,14 @@ function post_has_archive( $args, $post_type ) {
    return $link;
   }, 10, 2 );
   function add_article_post_permalink( $permalink ) {
-  $permalink = '/column' . $permalink;
+  $permalink = '/news' . $permalink;
    return $permalink;
   }
   add_filter( 'pre_post_link', 'add_article_post_permalink' );
   function add_article_post_rewrite_rules( $post_rewrite ) {
    $return_rule = array();
    foreach ( $post_rewrite as $regex => $rewrite ) {
-   $return_rule['column/' . $regex] = $rewrite;
+   $return_rule['news/' . $regex] = $rewrite;
    }
   return $return_rule;
   }
@@ -140,22 +143,4 @@ function information_rewrite_rules_array( $rules ) {
 }
 add_filter( 'rewrite_rules_array', 'information_rewrite_rules_array' );
 
-//マニュアル追加
-add_action ( 'admin_menu', 'artist_add_pages' );
-function artist_add_pages () {
-	add_menu_page('マニュアル', 'マニュアル', 'manage_options', 'manual', 'manual', 'dashicons-admin-generic', 2);
-}
-function add_side_menu_manual() {
-	//pdfのurlを設定
-	$pdf_url = get_bloginfo('template_directory') . '/manual.pdf';
-	?>
-	<script type="text/javascript">
-		jQuery( function( $ ) {
-			$ ("#toplevel_page_manual a").attr("href","<?php echo $pdf_url; ?>"); //hrefを書き換える
-			$ ("#toplevel_page_manual a").attr("target","_blank"); //target blankを追加する
-		} );
-	</script>
-<?php
-}
-add_action('admin_footer', 'add_side_menu_manual');
 ?>
